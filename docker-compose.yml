@@ -1,0 +1,32 @@
+version: "3.3"
+services:
+  # flyway:
+  #   image: flyway/flyway:6.1.1
+  #   command: info
+  #   hostname: flyway
+  #   domainname: example.com
+  #   container_name: flyway
+  #   environment: 
+  #     FLYWAY_CONFIG_FILES: /flyway.conf
+  #   volumes:
+  #   - ./src:/src
+  #   - ./flyway.conf:/flyway.conf
+
+  mariadb:
+    image: mariadb
+    hostname: mariadb
+    domainname: example.com
+    container_name: mariadb
+    ports: 
+      - 3306:3306
+    environment: 
+      MYSQL_ROOT_PASSWORD: p@ssW0rd
+      MYSQL_DATABASE: test
+      MYSQL_USER: flyway
+      MYSQL_PASSWORD: changeMe
+      TZ: Australia/Melbourne
+    volumes:
+      - mariadb_data:/var/lib/mysql 
+
+volumes: 
+  mariadb_data:      
